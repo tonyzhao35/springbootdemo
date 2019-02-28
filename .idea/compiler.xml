@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo-base" />
         <module name="demo-dao" />
+        <module name="demo-eureka-product-service" />
+        <module name="demo-eureka-server" />
         <module name="demo-service" />
         <module name="demo-web" />
       </profile>
@@ -16,6 +18,8 @@
       <module name="demo" target="1.8" />
       <module name="demo-base" target="1.8" />
       <module name="demo-dao" target="1.8" />
+      <module name="demo-eureka-product-service" target="1.8" />
+      <module name="demo-eureka-server" target="1.8" />
       <module name="demo-service" target="1.8" />
       <module name="demo-web" target="1.8" />
     </bytecodeTargetLevel>
@@ -25,6 +29,8 @@
       <module name="demo" options="-parameters" />
       <module name="demo-base" options="-parameters" />
       <module name="demo-dao" options="-parameters" />
+      <module name="demo-eureka-product-service" options="-parameters" />
+      <module name="demo-eureka-server" options="-parameters" />
       <module name="demo-service" options="-parameters" />
       <module name="demo-web" options="-parameters" />
     </option>

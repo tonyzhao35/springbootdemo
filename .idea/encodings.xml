@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-base" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-eureka-product-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-eureka-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-web" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
