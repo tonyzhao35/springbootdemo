@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
-//    public Product(){}
+    public Product(){}
 
     public Product(int id, String name, int price, int stock){
         this.id = id;
