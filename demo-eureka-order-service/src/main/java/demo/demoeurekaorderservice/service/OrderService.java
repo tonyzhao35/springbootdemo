@@ -14,4 +14,12 @@ public interface OrderService {
      * @return
      */
     Order save(String userId, String productId);
+
+    /**
+     * 下单接口
+     * @param userId
+     * @param productId
+     * @return
+     */
+    Order saveByProductClient(String userId, String productId);
 }

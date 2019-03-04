@@ -1,7 +1,10 @@
 package demo.demoeurekaorderservice.service.impl;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import demo.demoeurekaorderservice.domain.Order;
 import demo.demoeurekaorderservice.service.OrderService;
+import demo.demoeurekaorderservice.service.ProductClient;
+import demo.demoeurekaorderservice.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -21,6 +24,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private ProductClient productClient;
 
 //    @Autowired
 //    private LoadBalancerClient loadBalancer;
@@ -57,6 +63,27 @@ public class OrderServiceImpl implements OrderService {
         return null;
     }
 
+    @Override
+    public Order saveByProductClient(String userId, String productId) {
+        String resp = productClient.findById(Integer.parseInt(productId));
+        JsonNode node = JsonUtils.str2JsonNode(resp);
+        System.out.println(node);
+        if(node != null){
+            Order order = new Order();
+            order.setCreateTime(new Date());
+            order.setUserId(userId);
+            order.setTradeNo(UUID.randomUUID().toString());
+//            order.setProductId(getAttributeValue(obj,"id"));
+//            order.setProductName(getAttributeValue(obj,"name"));
+//            order.setPrice(Integer.parseInt(getAttributeValue(obj,"price")));
+            order.setProductId(node.get("id").toString());
+            order.setProductName(node.get("name").toString());
+            order.setPrice(Integer.parseInt(node.get("price").toString()));
+            return order;
+        }
+        return null;
+    }
+
     /**
      * 得到属性值
      * @param obj
@@ -75,4 +102,6 @@ public class OrderServiceImpl implements OrderService {
         }
         return null;
     }
+
+
 }
