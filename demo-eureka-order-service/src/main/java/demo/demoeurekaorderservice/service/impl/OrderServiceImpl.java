@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
         // 调用用户服务，主要是获取用户名称，用户级别或者积分信息
 
         System.out.println(obj);
-        if(obj != null){
+        if (obj != null) {
             Order order = new Order();
             order.setCreateTime(new Date());
             order.setUserId(userId);
@@ -68,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
         String resp = productClient.findById(Integer.parseInt(productId));
         JsonNode node = JsonUtils.str2JsonNode(resp);
         System.out.println(node);
-        if(node != null){
+        if (node != null) {
             Order order = new Order();
             order.setCreateTime(new Date());
             order.setUserId(userId);
@@ -86,18 +86,19 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 得到属性值
+     *
      * @param obj
      */
-    private String getAttributeValue(Object obj, String attr){
-        LinkedHashMap<Object, Object> objs = (LinkedHashMap<Object, Object>)obj;
-        for (Map.Entry<Object, Object> entry : objs.entrySet()){
+    private String getAttributeValue(Object obj, String attr) {
+        LinkedHashMap<Object, Object> objs = (LinkedHashMap<Object, Object>) obj;
+        for (Map.Entry<Object, Object> entry : objs.entrySet()) {
             //获取属性`
             String key = entry.getKey().toString();
             //一个个赋值
-            if(attr.equals(key)){
+            if (attr.equals(key)) {
                 //获取属性值
                 String value = entry.getValue().toString();
-                return value==null?null:value.toString();
+                return value == null ? null : value.toString();
             }
         }
         return null;
