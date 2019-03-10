@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo-api-gateway" />
         <module name="demo-base" />
         <module name="demo-dao" />
         <module name="demo-eureka-order-service" />
@@ -16,7 +17,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="api-gateway" target="1.8" />
       <module name="demo" target="1.8" />
+      <module name="demo-api-gateway" target="1.8" />
       <module name="demo-base" target="1.8" />
       <module name="demo-dao" target="1.8" />
       <module name="demo-eureka-order-service" target="1.8" />
@@ -28,7 +31,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="demo-api-gateway" options="-parameters" />
       <module name="demo-base" options="-parameters" />
       <module name="demo-dao" options="-parameters" />
       <module name="demo-eureka-order-service" options="-parameters" />

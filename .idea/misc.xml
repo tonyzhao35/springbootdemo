@@ -11,6 +11,8 @@
         <option value="$PROJECT_DIR$/demo-eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/demo-eureka-product-service/pom.xml" />
         <option value="$PROJECT_DIR$/demo-eureka-order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-api-gateway/pom.xml" />
       </list>
     </option>
   </component>

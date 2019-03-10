@@ -65,6 +65,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order saveByProductClient(String userId, String productId) {
+//        if ("1".equals(userId)){
+//            return new Order();
+//        }
         String resp = productClient.findById(Integer.parseInt(productId));
         JsonNode node = JsonUtils.str2JsonNode(resp);
         System.out.println(node);
