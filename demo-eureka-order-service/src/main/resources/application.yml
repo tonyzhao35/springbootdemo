@@ -38,7 +38,7 @@ hystrix:
           enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 1000
+            timeoutInMilliseconds: 2000
 #暴露全部的监控信息
 management:
   endpoints:

@@ -6,6 +6,7 @@ import demo.demoeurekaorderservice.service.OrderService;
 import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,17 +58,23 @@ public class OrderController {
     private Object saveOrderFail(String userId, String productId, HttpServletRequest request) {
         //监控报警
         String saveOrderKey = "save-order";
-        String value = redisTemplate.opsForValue().get(saveOrderKey);
-        new Thread(() -> {
-            if (StringUtils.isEmpty(value)) {
-                System.out.println("用户下单失败，请立即查找原因，IP地址为：" + request.getRemoteAddr());
-                redisTemplate.opsForValue().set(saveOrderKey, "message", 20, TimeUnit.SECONDS);
-                //发送一个http请求，调用短信服务
-            } else {
-                System.out.println("已发送消息，20秒内不再重发");
-            }
-        }).start();
-
+        String value = null;
+        try {
+            value = redisTemplate.opsForValue().get(saveOrderKey);
+            final String value1 = value;
+            new Thread(() -> {
+                if (StringUtils.isEmpty(value1)) {
+                    System.out.println("用户下单失败，请立即查找原因，IP地址为：" + request.getRemoteAddr());
+                    redisTemplate.opsForValue().set(saveOrderKey, "message", 20, TimeUnit.SECONDS);
+                    //发送一个http请求，调用短信服务
+                } else {
+                    System.out.println("已发送消息，20秒内不再重发");
+                }
+            }).start();
+        } catch (RedisConnectionFailureException ex) {
+            System.out.println("用户下单失败，请立即查找原因，IP地址为：" + request.getRemoteAddr());
+            System.out.println(ex.getMessage());
+        }
         Map<String, Object> ret = new HashMap<>();
         ret.put("successed", "false");
         ret.put("message", "调用失败");

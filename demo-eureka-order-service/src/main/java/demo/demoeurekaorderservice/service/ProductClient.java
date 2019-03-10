@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
     public interface ProductClient {
 
     @GetMapping("/api/v1/product/find")
-    String findById(int id);
+    String findById(@RequestParam("id") int id);
 
 }
