@@ -9,3 +9,9 @@ eureka:
 spring:
   application:
     name: product-service
+  #zipkin的配置
+  zipkin:
+    base-url: http://localhost:8080/
+  sleuth:
+    sampler:
+      probability: 1

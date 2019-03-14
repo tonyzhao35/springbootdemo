@@ -5,6 +5,7 @@ import demo.demoeurekaorderservice.domain.Order;
 import demo.demoeurekaorderservice.service.OrderService;
 import demo.demoeurekaorderservice.service.ProductClient;
 import demo.demoeurekaorderservice.utils.JsonUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -19,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -69,6 +71,7 @@ public class OrderServiceImpl implements OrderService {
 //            return new Order();
 //        }
         String resp = productClient.findById(Integer.parseInt(productId));
+        log.info("saveByProductClient");
         JsonNode node = JsonUtils.str2JsonNode(resp);
         System.out.println(node);
         if (node != null) {

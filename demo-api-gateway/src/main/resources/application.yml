@@ -19,4 +19,17 @@ zuul:
   ignored-patterns: /*-service/**
   #处理http请求头为空的问题
   sensitive-headers:
+  host:
+    connect-timeout-millis: 5000
 #  ignored-services: order-service,product-service
+#设置超时有效，超时时间4秒
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000

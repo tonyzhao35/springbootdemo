@@ -14,6 +14,7 @@
         <module name="demo-eureka-server" />
         <module name="demo-service" />
         <module name="demo-web" />
+        <module name="demo-zipkin-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,6 +28,8 @@
       <module name="demo-eureka-server" target="1.8" />
       <module name="demo-service" target="1.8" />
       <module name="demo-web" target="1.8" />
+      <module name="demo-zipkin" target="1.8" />
+      <module name="demo-zipkin-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -41,6 +44,8 @@
       <module name="demo-eureka-server" options="-parameters" />
       <module name="demo-service" options="-parameters" />
       <module name="demo-web" options="-parameters" />
+      <module name="demo-zipkin" options="" />
+      <module name="demo-zipkin-server" options="-parameters" />
     </option>
   </component>
 </project>

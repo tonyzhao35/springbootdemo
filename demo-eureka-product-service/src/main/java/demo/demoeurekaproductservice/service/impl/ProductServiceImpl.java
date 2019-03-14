@@ -2,6 +2,8 @@ package demo.demoeurekaproductservice.service.impl;
 
 import demo.demoeurekaproductservice.domain.Product;
 import demo.demoeurekaproductservice.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
