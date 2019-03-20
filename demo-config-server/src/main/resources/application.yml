@@ -1,0 +1,24 @@
+#服务端口定义
+server:
+  port: 9100
+#指定服务中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#服务的名称
+spring:
+  application:
+    name: config-server
+  #config信息存储git配置
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tonyzhao35/config-server
+          username: tonyzhao35
+          password: z8h2a4o3
+          #超时时间
+          timeout: 5
+          #默认分支
+          default-label: master
