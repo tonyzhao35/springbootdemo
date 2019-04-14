@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 商品服务客户端
  */
 @FeignClient(name = "product-service", fallback = ProductClientFallback.class)
-    public interface ProductClient {
+public interface ProductClient {
 
     @GetMapping("/api/v1/product/find")
     String findById(@RequestParam("id") int id);
